@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>HUB • Daily Key System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ================================
+   RESET + BASE
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #000;
+    color: #00ffcc;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ================================
+   FUNDO ANIMADO (GRID)
+================================ */
+.background {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0,255,204,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,204,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: moveGrid 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes moveGrid {
+    from { background-position: 0 0; }
+    to   { background-position: 400px 400px; }
+}
+
+/* ================================
+   CONTAINER
+================================ */
+.container {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================================
+   CARD
+================================ */
+.card {
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(0,255,204,0.3);
+    box-shadow: 0 0 40px rgba(0,255,204,0.15);
+    padding: 40px;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    text-align: center;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   TEXTOS
+================================ */
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 12px rgba(0,255,204,0.6);
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+.key-box {
+    background: rgba(0,255,204,0.08);
+    border: 1px dashed rgba(0,255,204,0.4);
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    word-break: break-all;
+    margin-bottom: 25px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 rgba(0,255,204,0.3); }
+    50% { box-shadow: 0 0 25px rgba(0,255,204,0.4); }
+    100% { box-shadow: 0 0 0 rgba(0,255,204,0.3); }
+}
+
+/* ================================
+   BUTTON
+================================ */
+button {
+    background: transparent;
+    color: #00ffcc;
+    border: 1px solid #00ffcc;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: #00ffcc;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0,255,204,0.8);
+}
+
+/* ================================
+   FOOTER
+================================ */
+.footer {
+    margin-top: 25px;
+    font-size: 11px;
+    opacity: 0.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+    <div class="card">
+        <div class="title">Hub Key System</div>
+        <div class="subtitle">DAILY KEY SYSTEM </div>
+
+        <div class="key-box" id="dailyKey">
+            CARREGANDO KEY...
+        </div>
+
+        <button onclick="copyKey()">COPIAR KEY</button>
+
+        <div class="footer">
+            ©  Hub • Sistema Diário • UTC-3
+        </div>
+    </div>
+</div>
+
+<script>
+/* =========================================
+   ZINAC HUB - DAILY KEY SYSTEM (100 KEYS)
+   Horário Brasília (UTC-3)
+========================================= */
+
+const DailyKeys = [
+"FREEKEY-001-9X7Q2A8M4ZLKP0HSDR3T6C",
+"FREEKEY-002-R4C8S2LQ6XKZP7A0M9DHT",
+"FREEKEY-003-AQZ7X4M8L9P0D2H6KCRST",
+"FREEKEY-004-PL8XQ0M7R2D9H6Z4AKCTS",
+"FREEKEY-005-0A6Z4C9P8R2H7QDKLXMTS",
+
+"FREEKEY-006-M2ZK8H0L9A6C7XRPQ4DST",
+"FREEKEY-007-7L9X8Z6Q4P0C2AKDRMHTS",
+"FREEKEY-008-Q8A7ZK6L0H2CXM9PDR4TS",
+"FREEKEY-009-ZP9Q6R4D2X7H8K0A3CLMTS",
+"FREEKEY-010-2R4ZQ8M6A7K9D0CPLXHTS",
+
+"FREEKEY-011-7P2X4ZQ8K0H6L9DARMCTS",
+"FREEKEY-012-6H9Q0Z8K2RDPAX7L4CMTS",
+"FREEKEY-013-XZ8L6A9P7K0H4R2QDMCTS",
+"FREEKEY-014-0Q9R8Z6L2XH7A4KDPCTMS",
+"FREEKEY-015-PZ0A4X9R7L6KQ2H8DMCTS",
+
+"FREEKEY-016-Z8X6P0A4R9H7L2KQDMCTS",
+"FREEKEY-017-4A2K6QZ0X7R9H8LDPCTMS",
+"FREEKEY-018-Q9RZ4A8KX0L7P6H2DMCTS",
+"FREEKEY-019-7Z8L2A0P6Q9KXH4RDMCTS",
+"FREEKEY-020-8X9Z6A0K7R4H2PLQDMCTS",
+
+"FREEKEY-021-R9H6Z8A2K4X0P7LQDMCTS",
+"FREEKEY-022-4Q6H9X0ZK2P8R7ALDMCTS",
+"FREEKEY-023-ZA6Q8KX7H9R0P2L4DMCTS",
+"FREEKEY-024-8L4X6Z7Q0R9HAP2KDMCTS",
+"FREEKEY-025-H6A9RZ2X7K4LQ0P8DMCTS",
+
+"FREEKEY-026-7Q0H2XK4LZ6A9R8PDMCTS",
+"FREEKEY-027-0ZK4L8QH2X9A7R6PDMCTS",
+"FREEKEY-028-X6Z8LQ9R2K7A0H4PDMCTS",
+"FREEKEY-029-R0ZK8Q2A6X7L9H4PDMCTS",
+"FREEKEY-030-L8RZ4Q9H0KX7A2P6DMCTS",
+
+"FREEKEY-031-6A2X7KZQ9H4R8L0PDMCTS",
+"FREEKEY-032-Z9K0L2Q4X6A8R7HPDMCTS",
+"FREEKEY-033-8X7A2Z4K6R0L9QHPDMCTS",
+"FREEKEY-034-9Q8A6X7Z2R4L0KHPDMCTS",
+"FREEKEY-035-K9R6QZ2A0X4L8H7PDMCTS",
+
+"FREEKEY-036-Z7Q0A4R6L8K9H2XPDMCTS",
+"FREEKEY-037-6ZK4X2Q9R7A8H0LPDMCTS",
+"FREEKEY-038-R8X0QZ6K4A7L2H9PDMCTS",
+"FREEKEY-039-Q6A4KZ8X7R2L0H9PDMCTS",
+"FREEKEY-040-4X9A6Z2R8Q0K7HLDPDMCTS",
+
+"FREEKEY-041-9ZK4Q6A2R7X8L0HPDMCTS",
+"FREEKEY-042-A2Z6R9X8K4LQ0H7PDMCTS",
+"FREEKEY-043-Q9X4Z8K6R2A0L7HPDMCTS",
+"FREEKEY-044-6Z4KX7Q0A2R9L8HPDMCTS",
+"FREEKEY-045-X2K8Z7Q6A4R9L0HPDMCTS",
+
+"FREEKEY-046-7A2X4Z8Q6K9R0LHPDMCTS",
+"FREEKEY-047-ZX9Q8A7R4L2K6H0PDMCTS",
+"FREEKEY-048-8Z7Q6K4A9X2L0RHPDMCTS",
+"FREEKEY-049-R4Z2Q7X8A6K0L9HPDMCTS",
+"FREEKEY-050-2ZK9Q4X8A6R7L0HPDMCTS",
+
+"FREEKEY-051-Q8A9X7Z2R4L6K0HPDMCTS",
+"FREEKEY-052-Z2X6Q7R8A4K9L0HPDMCTS",
+"FREEKEY-053-7R9XQZ4K2A8L6H0PDMCTS",
+"FREEKEY-054-XQ6Z9A4R2K7L8H0PDMCTS",
+"FREEKEY-055-9K4ZQ6R8X7A2L0HPDMCTS",
+
+"FREEKEY-056-6A2RZ8XQ9K7L4H0PDMCTS",
+"FREEKEY-057-QZ8K6X4R9A7L2H0PDMCTS",
+"FREEKEY-058-8Q2A6Z9X4R7KHL0PDMCTS",
+"FREEKEY-059-7A9X4ZQ2R6K8HL0PDMCTS",
+"FREEKEY-060-Z8Q6R4A7X2K9HL0PDMCTS",
+
+"FREEKEY-061-6R8QZ4X2A9K7HL0PDMCTS",
+"FREEKEY-062-9ZQ7R8A6K4X2HL0PDMCTS",
+"FREEKEY-063-X6QZ7A4R8K9HL02PDMCTS",
+"FREEKEY-064-Q4X6Z2A8R7K9HL0PDMCTS",
+"FREEKEY-065-8RZQ4X6A2K7HL09PDMCTS",
+
+"FREEKEY-066-A6Z8R7Q4X2K9HL0PDMCTS",
+"FREEKEY-067-7QZ2A4X6R8K9HL0PDMCTS",
+"FREEKEY-068-4X6ZQ8A7R2K9HL0PDMCTS",
+"FREEKEY-069-Z8A7Q4X2R6K9HL0PDMCTS",
+"FREEKEY-070-6Q7Z8A4X2R9KHL0PDMCTS",
+
+"FREEKEY-071-Q4Z6A8R7X2K9HL0PDMCTS",
+"FREEKEY-072-7A6Z4Q8X2R9KHL0PDMCTS",
+"FREEKEY-073-ZQ8X7A6R4K2HL09PDMCTS",
+"FREEKEY-074-8Z4A6Q7X2R9KHL0PDMCTS",
+"FREEKEY-075-AQZ6X4R8K7HL20PDMCTS",
+
+"FREEKEY-076-7Z8A4X6Q2R9KHL0PDMCTS",
+"FREEKEY-077-XQ7Z4A6R8K2HL09PDMCTS",
+"FREEKEY-078-6Z4Q8A7X2R9KHL0PDMCTS",
+"FREEKEY-079-8QZ7A6X4R2KHL09PDMCTS",
+"FREEKEY-080-Z6A4Q8X7R2KHL09PDMCTS",
+
+"FREEKEY-081-Q7Z8X6A4R2KHL09PDMCTS",
+"FREEKEY-082-6A8Z4Q7X2R9KHL0PDMCTS",
+"FREEKEY-083-Z8Q6A7X4R2KHL09PDMCTS",
+"FREEKEY-084-A7Z4Q6X8R2KHL09PDMCTS",
+"FREEKEY-085-QZ6X4A7R8KHL02PDMCTS",
+
+"FREEKEY-086-4Z6A8Q7X2R9KHL0PDMCTS",
+"FREEKEY-087-XA7Z4Q6R8K2HL09PDMCTS",
+"FREEKEY-088-Z6Q7A4X8R2KHL09PDMCTS",
+"FREEKEY-089-8A4Z6Q7X2R9KHL0PDMCTS",
+"FREEKEY-090-Q6Z4A8X7R2KHL09PDMCTS",
+
+"FREEKEY-091-Z4A6Q8X7R2KHL09PDMCTS",
+"FREEKEY-092-6Q8Z4A7X2R9KHL0PDMCTS",
+"FREEKEY-093-AZ6Q4X8R7KHL20PDMCTS",
+"FREEKEY-094-8ZQ6A4X7R2KHL09PDMCTS",
+"FREEKEY-095-QA6Z8X4R7KHL20PDMCTS",
+
+"FREEKEY-096-Z6A8Q4X7R2KHL09PDMCTS",
+"FREEKEY-097-4QZ6A8X7R2KHL09PDMCTS",
+"FREEKEY-098-8A4Z6Q7X2R9KHL0PDMCTS",
+"FREEKEY-099-ZQ6A4X8R7KHL20PDMCTS",
+"FREEKEY-100-6Z8A4QX7R2KHL09PDMCTS"
+];
+
+/* =========================================
+   CALCULO DO DIA (UTC-3)
+========================================= */
+const now = new Date();
+now.setHours(now.getHours() - 3);
+
+const start = new Date(now.getFullYear(), 0, 0);
+const diff = now - start;
+const oneDay = 1000 * 60 * 60 * 24;
+const dayOfYear = Math.floor(diff / oneDay);
+
+const index = dayOfYear % 100;
+const todayKey = DailyKeys[index];
+
+document.getElementById("dailyKey").innerText = todayKey;
+
+function copyKey() {
+    navigator.clipboard.writeText(todayKey);
+}
+</script>
+
+</body>
+</html>
